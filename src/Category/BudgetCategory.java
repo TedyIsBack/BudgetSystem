@@ -1,34 +1,36 @@
 package Category;
 
-import Transactions.Expense;
-
-import java.util.ArrayList;
-import java.util.List;
+import Accounts.Account;
 
 public  abstract class BudgetCategory {
-    private Category name;
+    private Category category;
     private double amount ;
-    private List<Expense> expenseList;
+    protected Account forAccount;
 
-    public BudgetCategory(Category name) {
-        this.name = name;
-        amount = 0;
-        expenseList = new ArrayList<>();
+    public BudgetCategory(Category categoryName, double amount,Account account) {
+        this.category = categoryName;
+        this.amount = amount;
+        forAccount = account;
+    }
+    public double getAmount() {
+        return amount;
     }
 
     public Category getCategory() {
-        return name;
+        return category;
     }
 
-   public void addExpence (Expense expense){
-        expenseList.add(expense);
-   }
-   public void removeExpence(Expense expense){
-        expenseList.remove(expense);
-   }
+    public void changeCategory(Category category) {
+        this.category = category;
+    }
 
-    public double getAmount() {
-        return amount;
+    public void changeAmount(double amount) {
+        this.amount = amount;
+    }
+
+    @Override
+    public String toString() {
+        return "%s - %.2f лв. going into %10s".formatted(category.name(),amount,forAccount);
     }
 }
 

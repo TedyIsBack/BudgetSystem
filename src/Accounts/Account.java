@@ -21,9 +21,11 @@ public abstract class Account {
 
     public void addExpence(Expense expense){
 
-        balance += expense.getAmount();
-        Category category = null;
-        for (Transaction t : transactionList){
+        if(expense.getAmount() > 0) {
+            balance -= expense.getAmount();
+            transactionList.add(expense);
+        }
+        /*for (Transaction t : transactionList){
             if(t.getBudgetCategory().equals(expense.getBudgetCategory())){
                 category = expense.getBudgetCategory();
                 break;
@@ -38,18 +40,39 @@ public abstract class Account {
             transactionList.get(index).deposit(expense.getAmount());
             System.out.println("Successfuly added to the expence " + expense.getBudgetCategory());
 
-        }
+        }*/
     }
 
-    public void removeExpence(Expense expense){
+    /*public void removeExpence(Expense expense){
         if(transactionList.contains(expense)){
+            balance += expense.getAmount();
             transactionList.remove(expense);
             System.out.println("Successfuly removed");
         }
         else {
             System.out.println("Can't find and remove the expence");
         }
+    }*/
+
+
+    /*public void addIncome(Income income){
+
+        if(income.getAmount() > 0) {
+            balance += income.getAmount();
+            transactionList.add(income);
+        }
     }
+
+    public void removeIncome(Income income){
+        if(transactionList.contains(income)){
+            transactionList.remove(income);
+            balance -= income.getAmount();
+            System.out.println("Successfuly removed");
+        }
+        else {
+            System.out.println("Can't find and remove the expence");
+        }
+    }*/
 
     public double getBalance() {
         return balance;
@@ -68,6 +91,6 @@ public abstract class Account {
     }
     @Override
     public String toString() {
-        return "Accounts.Account %s-15 %f".formatted(name,balance);
+        return "%s (balance : %.2f лв.)".formatted(name,balance);
     }
 }
