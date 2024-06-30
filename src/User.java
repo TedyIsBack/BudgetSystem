@@ -1,3 +1,5 @@
+import Accounts.Account;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -35,12 +37,14 @@ public class User {
     }
 
     public void PrintAccounts(){
-        System.out.println("Account list for user " + name);
+        System.out.println("Accounts.Account list for user " + name);
         for (Account account : accounts) {
             System.out.println(account);
         }
     }
-    public void UserInfo(){
 
+    @Override
+    public String toString() {
+        return "%s has %d accounts in this system with total balance %.2f".formatted(name,accounts.size(),TotalBalance);
     }
 }
