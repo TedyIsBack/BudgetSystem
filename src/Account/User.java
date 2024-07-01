@@ -1,4 +1,8 @@
-import Category.Account;
+package Account;
+
+import Account.Account;
+import Transactions.IncomeTransaction;
+import Transactions.Transaction;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -26,18 +30,36 @@ public class User {
         while (iterator.hasNext()) {
             Account account = iterator.next();
             if (account.getName().equals(name)) {
-                TotalBalance -= account.getBalance();
-                iterator.remove();
+             TotalBalance -= account.getBalance();
+              iterator.remove();
             }
         }
     }
+/*
+
+    public void addTransaction(Account account, IncomeTransaction transaction){
+        if(accounts.contains(account) && transaction.getAmount() > 0){
+            account.addToProfit(transaction);
+            System.out.println("Успешно направена транзакция " + transaction +" в сметка  " + account.getName() );
+        }
+    }
+*/
+
+    protected void setTotalBalance(double totalBalance) {
+        TotalBalance = totalBalance;
+    }
 
     public double getTotalBalance() {
+
+        TotalBalance = 0;
+        for (var account : accounts) {
+            TotalBalance += account.getBalance();
+        }
         return TotalBalance;
     }
 
     public void PrintAccounts(){
-        System.out.println("Category_and_Account.Account list for user " + name);
+        System.out.println("Account list for user " + name + " : ");
         for (Account account : accounts) {
             System.out.println(account);
         }

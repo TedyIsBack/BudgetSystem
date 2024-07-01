@@ -1,42 +1,21 @@
-
-import Category.*;
-import Category.IncomeCategory;
-import Transactions_and_Account.*;
+import Account.*;
+import Transactions.*;
 
 public class Main {
     public static void main(String[] args) {
-        User user = new User("Peter Frank");
-        Transaction income = new Income();
-        Transaction expence = new Expense();
-        Account mainAcc = new SavingAccount("Saving Account",30,income,expence);
+        User user = new User("Peter Draker");
+         Account account = new Account("Saving Account",300);
+         user.addAccount(account);
 
-        BudgetCategory i = new IncomeCategory(Category.FAMILY,20,mainAcc);
+        System.out.println(user);
 
+        account.addToProfit(new IncomeTransaction(30,IncomeCategory.BANK));
+        System.out.println("user balance " + user.getTotalBalance());
+        account.removeFromProfit(new IncomeTransaction(30,IncomeCategory.BANK));
+        account.addToExpence(new ExpenseTransaction(30,ExpenceCategory.FOOD));
+        account.removeFromExpence(new ExpenseTransaction(20,ExpenceCategory.FOOD));
 
-        user.addAccount(mainAcc);
-        System.out.println("user : " + user);
-
-
-        System.out.println();
-        System.out.println("\n Adding incomes : ");
-        income.addCategory(i);
-        income.addCategory(new IncomeCategory(Category.OTHERS,30,mainAcc));
-
-        System.out.println("\n Adding expenses : ");
-        expence.addCategory(new ExpenceCategory(Category.FOOD, 40,mainAcc));
-
-
-        System.out.println("Print incomes ");
-        income.print();
-
-        System.out.println("----------------------------------------------");
-        System.out.println("user's balance: " + user.getTotalBalance());
-
-
-        /*
-        budgetCategory - иконите, които са част от приходите / разходите
-
-
-         */
+        System.out.println("account balance " + account.getBalance());
+        user.PrintAccounts();
     }
 }
