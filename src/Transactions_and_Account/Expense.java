@@ -1,4 +1,4 @@
-package Transactions;
+package Transactions_and_Account;
 
 import Category.*;
 
@@ -9,9 +9,10 @@ public class Expense extends Transaction{
     private List<BudgetCategory> expenceCategories = new ArrayList<>();
 
     public  void addCategory(BudgetCategory expence){
-        if(amount > expence.getAmount()){
+        if(amount >= expence.getAmount()){
             amount -= expence.getAmount();
             expenceCategories.add(expence);
+            budgetCategories.add(expence);
             System.out.println("Sucessfully added expesne for  " + expence.getCategory());
         }
     }
@@ -19,13 +20,17 @@ public class Expense extends Transaction{
     public void removeCategory (BudgetCategory expence){
       amount += expence.getAmount();
         expenceCategories.remove(expence);
+        budgetCategories.remove(expence);
         System.out.println("Successfuly removed expence");
     }
 
-    public void print(){
-        expenceCategories.forEach((e) -> {
+    /*public void print() {
+        System.out.println("Print incomes : ");
+        for (var e :  expenceCategories) {
             System.out.println(e);
-        });
-    }
+        }
+    }*/
+
+
 
 }

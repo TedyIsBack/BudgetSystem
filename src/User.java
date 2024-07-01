@@ -1,4 +1,4 @@
-import Accounts.Account;
+import Category.Account;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -37,7 +37,7 @@ public class User {
     }
 
     public void PrintAccounts(){
-        System.out.println("Accounts.Account list for user " + name);
+        System.out.println("Category_and_Account.Account list for user " + name);
         for (Account account : accounts) {
             System.out.println(account);
         }
