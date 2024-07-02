@@ -1,9 +1,5 @@
 package Account;
 
-import Account.Account;
-import Transactions.IncomeTransaction;
-import Transactions.Transaction;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -59,14 +55,16 @@ public class User {
     }
 
     public void PrintAccounts(){
-        System.out.println("Account list for user " + name + " : ");
+        System.out.println("---------------------\n| Account list for user " + name + " : ");
         for (Account account : accounts) {
-            System.out.println(account);
+            System.out.println("| " + account);
         }
+        System.out.println();
     }
 
     @Override
     public String toString() {
-        return "%s has %d accounts in this system with total balance %.2f".formatted(name,accounts.size(),TotalBalance);
+        return ("---------------------\n" +
+                "%s has %d accounts in this system with total balance %.2f\n").formatted(name,accounts.size(),TotalBalance);
     }
 }

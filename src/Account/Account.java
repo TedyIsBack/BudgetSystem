@@ -2,7 +2,6 @@ package Account;
 
 import Transactions.ExpenseTransaction;
 import Transactions.IncomeTransaction;
-import Transactions.Transaction;
 
 public  class Account {
    private String name;
@@ -31,8 +30,9 @@ public  class Account {
    }
 
    public void removeFromProfit(IncomeTransaction income){
-      profitPart.removeTransaction(income);
-      balance -= income.getAmount();
+      if(profitPart.removeTransaction(income)) {
+         balance -= income.getAmount();
+      }
    }
 
    public void addToExpence(ExpenseTransaction expense){
@@ -40,8 +40,16 @@ public  class Account {
       balance -= expense.getAmount();
    }
    public void removeFromExpence(ExpenseTransaction expense){
-      expencePart.removeTransaction(expense);
-      balance += expense.getAmount();
+      double value = expencePart.removeTransaction(expense);
+      if(value >= 0) {
+         balance += value;
+      }
+   }
+
+   public void printAllTransactions(){
+      System.out.println(" >> All transactions for " + name);
+      profitPart.printTransactions();
+      expencePart.printTransactions();
    }
 
    public double getBalance() {

@@ -6,16 +6,18 @@ public class Main {
         User user = new User("Peter Draker");
          Account account = new Account("Saving Account",300);
          user.addAccount(account);
+        user.PrintAccounts();
 
         System.out.println(user);
 
-        account.addToProfit(new IncomeTransaction(30,IncomeCategory.BANK));
-        System.out.println("user balance " + user.getTotalBalance());
-        account.removeFromProfit(new IncomeTransaction(30,IncomeCategory.BANK));
-        account.addToExpence(new ExpenseTransaction(30,ExpenceCategory.FOOD));
-        account.removeFromExpence(new ExpenseTransaction(20,ExpenceCategory.FOOD));
+       // account.addToProfit(new IncomeTransaction(4,30,IncomeCategory.BANK));
+       // account.removeFromProfit(new IncomeTransaction(4,20,IncomeCategory.BANK));
+        account.addToExpence(new ExpenseTransaction(1,30,ExpenceCategory.FOOD));
+        account.removeFromExpence(new ExpenseTransaction(1,40,ExpenceCategory.FOOD));
 
+        System.out.println("user balance " + user.getTotalBalance());
         System.out.println("account balance " + account.getBalance());
-        user.PrintAccounts();
+        System.out.println();
+        account.printAllTransactions();
     }
 }

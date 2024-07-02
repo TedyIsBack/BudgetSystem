@@ -1,17 +1,31 @@
 package Transactions;
-public class IncomeTransaction extends Transaction {
+public class IncomeTransaction  {
 
-    private double amount;
     private IncomeCategory category;
+    private double amount;
+    private  int id ;
 
-    public IncomeTransaction(double amount,IncomeCategory incomeCategory) {
-        super(amount);
+    public IncomeTransaction(int id,double amount,IncomeCategory incomeCategory) {
+        this.id = id;
+        this.amount = amount;
         category = incomeCategory;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override
     public String toString() {
-        return "Income from  " + category + " : " + amount;
+        return "Income No. " + id +" from  " + category + " : " + amount;
+    }
+
+    public void setAmount(double change) {
+        amount = change;
     }
 }
 

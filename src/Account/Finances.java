@@ -1,9 +1,5 @@
 package Account;
 
-import Transactions.Transaction;
-
-import java.util.ArrayList;
-
 public abstract class Finances {
 
     private double amount;
@@ -12,10 +8,7 @@ public abstract class Finances {
         amount = 0;
     }
 
-   // protected abstract void addTransaction(Transaction transaction);
-
-
-   // protected abstract void removeTransaction(Transaction transaction);
+    protected abstract void printTransactions();
 
     public double getAmount() {
         return amount;

@@ -1,17 +1,32 @@
 package Transactions;
 
 
-public class ExpenseTransaction  extends  Transaction{
+public class ExpenseTransaction  {
 
 private ExpenceCategory category;
-    public ExpenseTransaction(double amount,ExpenceCategory expenceCategory) {
-        super(amount);
+private int id ;
+private double amount;
+    public ExpenseTransaction(int id,double amount,ExpenceCategory expenceCategory) {
+        this.id = id;
+        this.amount = amount;
         category = expenceCategory;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override
     public String toString() {
-        return "Expence for " + category + " : " + amount;
+        return "Expence No. " + id +" for  " + category + " : " + amount;
     }
 }
 
